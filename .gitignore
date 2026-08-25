@@ -6,3 +6,4 @@ embeddings.npy
 *.egg-info/
 .ipynb_checkpoints/
 docs/
+Notes.md
