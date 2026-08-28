@@ -1,4 +1,4 @@
-import os, glob
+import os, glob, re
 
 def load_docs(folder="docs"):
     docs = []
@@ -10,6 +10,7 @@ def load_docs(folder="docs"):
 def chunk_text(text, size=1000, overlap=150):
     chunks = []
     start = 0
+    text = re.sub(r"\s+", " ", text)
     while start < len(text):
         chunks.append(text[start:start + size])
         start += size - overlap

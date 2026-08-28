@@ -1,0 +1,143 @@
+[
+  {
+    "id": "q1",
+    "question": "What is the vanishing gradient problem in RNNs?",
+    "answer_span": "traditional RNNs suffer from the vanishing gradient problem",
+    "source_doc": "recurrent_neural_network.txt",
+    "type": "single"
+  },
+  {
+    "id": "q2",
+    "question": "What three gates make up an LSTM unit?",
+    "answer_span": "an input gate, an output gate, and a forget gate",
+    "source_doc": "long_short-term_memory.txt",
+    "type": "single"
+  },
+  {
+    "id": "q3",
+    "question": "Who developed generative adversarial networks and when?",
+    "answer_span": "initially developed by Ian Goodfellow and his colleagues in June",
+    "source_doc": "generative_adversarial_network.txt",
+    "type": "single"
+  },
+  {
+    "id": "q4",
+    "question": "Which paper introduced the transformer architecture?",
+    "answer_span": "the 2017 paper \"Attention Is All You Need\"",
+    "source_doc": "transformer_deep_learning_architecture.txt",
+    "type": "single"
+  },
+  {
+    "id": "q5",
+    "question": "Who is gradient descent generally attributed to?",
+    "answer_span": "attributed to Augustin-Louis Cauchy, who first suggested it in 1847",
+    "source_doc": "gradient_descent.txt",
+    "type": "single"
+  },
+  {
+    "id": "q6",
+    "question": "What problem was batch normalization originally developed to address?",
+    "answer_span": "Batch normalization was first developed to address internal covariate shift",
+    "source_doc": "batch_normalization.txt",
+    "type": "single"
+  },
+  {
+    "id": "q7",
+    "question": "What is overfitting?",
+    "answer_span": "corresponds too closely or exactly to a particular set of data",
+    "source_doc": "overfitting.txt",
+    "type": "single"
+  },
+  {
+    "id": "q8",
+    "question": "What does the discriminator network do in a GAN?",
+    "answer_span": "another neural network that can tell how \"realistic\" the input seems",
+    "source_doc": "generative_adversarial_network.txt",
+    "type": "single"
+  },
+  {
+    "id": "q9",
+    "question": "What is backpropagation?",
+    "answer_span": "backpropagation is a gradient computation method commonly used for training a neural network",
+    "source_doc": "backpropagation.txt",
+    "type": "single"
+  },
+  {
+    "id": "q10",
+    "question": "Why are fully connected networks prone to overfitting?",
+    "answer_span": "The \"full connectivity\" of these networks makes them prone to overfitting",
+    "source_doc": "convolutional_neural_network.txt",
+    "type": "single"
+  },
+  {
+    "id": "q11",
+    "question": "What biological system inspired convolutional networks?",
+    "answer_span": "resembles the organization of the animal visual cortex",
+    "source_doc": "convolutional_neural_network.txt",
+    "type": "single"
+  },
+  {
+    "id": "q12",
+    "question": "What loss function is normally used for classification versus regression?",
+    "answer_span": "usually cross-entropy (XC, log loss), while for regression it is usually squared error loss",
+    "source_doc": "backpropagation.txt",
+    "type": "single"
+  },
+  {
+    "id": "q13",
+    "question": "Why do transformers train faster than LSTMs?",
+    "answer_span": "no recurrent units, therefore requiring less training time",
+    "source_doc": "transformer_deep_learning_architecture.txt",
+    "type": "hard"
+  },
+  {
+    "id": "q14",
+    "question": "How do soft weights differ from hard weights?",
+    "answer_span": "\"soft\" weights exist only in the forward pass",
+    "source_doc": "attention_machine_learning.txt",
+    "type": "hard"
+  },
+  {
+    "id": "q15",
+    "question": "Can a model memorise its training data completely?",
+    "answer_span": "perfectly predict the training data simply by memorizing the data in its entirety",
+    "source_doc": "overfitting.txt",
+    "type": "hard"
+  },
+  {
+    "id": "q16",
+    "question": "How does Proximal Policy Optimization work?",
+    "answer_span": null,
+    "source_doc": null,
+    "type": "unanswerable"
+  },
+  {
+    "id": "q17",
+    "question": "What is the reverse diffusion process in a denoising diffusion model?",
+    "answer_span": null,
+    "source_doc": null,
+    "type": "unanswerable",
+    "note": "hard negative: corpus mentions 'diffusion model' once in passing but never explains it"
+  },
+  {
+    "id": "q18",
+    "question": "How does a random forest combine decision trees?",
+    "answer_span": null,
+    "source_doc": null,
+    "type": "unanswerable"
+  },
+  {
+    "id": "q19",
+    "question": "What is the kernel trick in support vector machines?",
+    "answer_span": null,
+    "source_doc": null,
+    "type": "unanswerable"
+  },
+  {
+    "id": "q20",
+    "question": "How does the PageRank algorithm rank web pages?",
+    "answer_span": null,
+    "source_doc": null,
+    "type": "unanswerable"
+  }
+]
