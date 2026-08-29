@@ -53,19 +53,19 @@ if __name__ == "__main__":
 
     recall1 = 0
     recall5 = 0
-    mmr = 0
+    mrr = 0
     for r in ranks:
         if r == 1:
             recall1 += 1
         if r is not None:
             recall5 += 1
-            mmr += 1/r
+            mrr += 1/r
 
     recall1 /= len(ranks)
     recall5 /= len(ranks)
-    mmr /= len(ranks)
+    mrr /= len(ranks)
 
-    print(f"Recall@1: {recall1:.2f} - Recall@5: {recall5:.2f} - MMR: {mmr:.2f}")
+    print(f"Recall@1: {recall1:.2f} - Recall@5: {recall5:.2f} - MRR: {mrr:.2f}")
 
     # text, hits = answer(q, chunks, emb)
     # print(f"\n=== {q}\n{text}")
