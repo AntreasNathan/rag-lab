@@ -1,6 +1,6 @@
 from chunks_gen import load_docs, build_chunks
 from model import embed_chunks
-from retrieval import answer
+from retrieval import answer, generate
 from model import search
 import json
 
@@ -32,14 +32,15 @@ if __name__ == "__main__":
     #     q = "What is the vanishing gradient problem?"
 
     ranks = []
-
+    print("\nAnswers are in documents\n")
     for q in questions:
-        print(f" Question: {q['question']}")
-        found = False
         if q['answer_span'] is None:
             continue
+        print(f" Question: {q['question']}")
+        found = False
         rank = 0
-        for chunk, score in search(q['question'], chunks, emb):
+        chunks_and_scores = search(q['question'], chunks, emb)
+        for chunk, score in chunks_and_scores:
             #print(f"Text ----- {chunk['text']}")
             rank += 1
             if q['answer_span'] in chunk['text']:
@@ -50,6 +51,23 @@ if __name__ == "__main__":
         if not found:
             ranks.append(None)
             print("Not found")
+        llm_answer = generate(q["question"], chunks_and_scores)
+        print(f"LLM Answer: {llm_answer}")
+
+    print("Answers NOT in documents\n")
+    num_of_no_aswers = 0
+    refusals = 0
+    for q in questions:
+        if q['answer_span'] is not None:
+            continue
+        num_of_no_aswers += 1
+        print(f" Question: {q['question']}")
+        chunks_and_scores = search(q['question'], chunks, emb)
+        print(f"No Answer in Docs - Score of 1st vector: {chunks_and_scores[0][1]}")
+        llm_answer = generate(q["question"], chunks_and_scores)
+        print(f"LLM Answer: {llm_answer}")
+        if "not in documents" in llm_answer.lower():
+            refusals += 1
 
     recall1 = 0
     recall5 = 0
@@ -65,7 +83,11 @@ if __name__ == "__main__":
     recall5 /= len(ranks)
     mrr /= len(ranks)
 
+    abstention = refusals / num_of_no_aswers
+
     print(f"Recall@1: {recall1:.2f} - Recall@5: {recall5:.2f} - MRR: {mrr:.2f}")
+    print(f"Abstention: {abstention:.2f} - Not in docs Questions: {num_of_no_aswers:.2f} - Refusals: {refusals:.2f}")
+
 
     # text, hits = answer(q, chunks, emb)
     # print(f"\n=== {q}\n{text}")
