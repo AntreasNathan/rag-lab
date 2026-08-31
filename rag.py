@@ -8,12 +8,6 @@ if __name__ == "__main__":
     chunks = build_chunks(docs)
     emb = embed_chunks(chunks)
 
-    # print(f"{len(docs)} docs → {len(chunks)} chunks")
-    # print("\n--- FIRST CHUNK ---")
-    # print(chunks[0]["text"][:400])
-    # print("\n--- A MIDDLE CHUNK ---")
-    # print(chunks[len(chunks)//2]["text"][:400])
-
     print(f"{len(chunks)} chunks, embeddings shape {emb.shape}")
 
     for q in ["What is the vanishing gradient problem?",

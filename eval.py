@@ -14,22 +14,8 @@ if __name__ == "__main__":
 
     with open("questions.json", "r" , encoding="utf-8") as file:
         questions = json.load(file)
-    
-
-    # print(f"{len(docs)} docs → {len(chunks)} chunks")
-    # print("\n--- FIRST CHUNK ---")
-    # print(chunks[0]["text"][:400])
-    # print("\n--- A MIDDLE CHUNK ---")
-    # print(chunks[len(chunks)//2]["text"][:400])
 
     print(f"{len(chunks)} chunks, embeddings shape {emb.shape}")
-
-    # for q in ["What is the vanishing gradient problem?",
-    #           "How does multi-head attention work?"]:
-    #     print(f"\n=== {q}")
-    #     for c, s in search(q, chunks, emb):
-    #         print(f"  {s:.3f}  {c['id']}  {c['text'][:100].strip()}")
-    #     q = "What is the vanishing gradient problem?"
 
     ranks = []
     print("\nAnswers are in documents\n")
@@ -41,7 +27,6 @@ if __name__ == "__main__":
         rank = 0
         chunks_and_scores = search(q['question'], chunks, emb)
         for chunk, score in chunks_and_scores:
-            #print(f"Text ----- {chunk['text']}")
             rank += 1
             if q['answer_span'] in chunk['text']:
                 print(f"Found! - Position: {rank} - Score: {score}")
@@ -55,12 +40,12 @@ if __name__ == "__main__":
         print(f"LLM Answer: {llm_answer}")
 
     print("Answers NOT in documents\n")
-    num_of_no_aswers = 0
+    num_of_no_answers = 0
     refusals = 0
     for q in questions:
         if q['answer_span'] is not None:
             continue
-        num_of_no_aswers += 1
+        num_of_no_answers += 1
         print(f" Question: {q['question']}")
         chunks_and_scores = search(q['question'], chunks, emb)
         print(f"No Answer in Docs - Score of 1st vector: {chunks_and_scores[0][1]}")
@@ -83,12 +68,8 @@ if __name__ == "__main__":
     recall5 /= len(ranks)
     mrr /= len(ranks)
 
-    abstention = refusals / num_of_no_aswers
+    abstention = refusals / num_of_no_answers
 
     print(f"Recall@1: {recall1:.2f} - Recall@5: {recall5:.2f} - MRR: {mrr:.2f}")
-    print(f"Abstention: {abstention:.2f} - Not in docs Questions: {num_of_no_aswers:.2f} - Refusals: {refusals:.2f}")
+    print(f"Abstention: {abstention:.2f} - Not in docs Questions: {num_of_no_answers:.2f} - Refusals: {refusals:.2f}")
 
-
-    # text, hits = answer(q, chunks, emb)
-    # print(f"\n=== {q}\n{text}")
-    # print("\nsources:", [c["id"] for c, _ in hits])

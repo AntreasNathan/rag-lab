@@ -1,5 +1,5 @@
 import sys
-from rag import load_docs, build_chunks
+from chunks_gen import load_docs, build_chunks
 import re
 
 term = sys.argv[1]
